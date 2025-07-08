@@ -5,6 +5,7 @@ public class Interactor : MonoBehaviour
 {
     public UnityEvent onInteractIn;
     public UnityEvent onInteractOut;
+    public UnityEvent onInteract;
 
     RaycastHit hit;
     private bool hasInteracted = false;
@@ -33,6 +34,7 @@ public class Interactor : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     interactable.Interact();
+                    onInteract.Invoke();
                 }
             }
             else

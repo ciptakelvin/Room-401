@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,5 +16,15 @@ public class UIManager : MonoBehaviour
     public void InteractOut()
     {
         animator.SetTrigger("interactOut");
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Show()
+    { 
+        gameObject.SetActive(true);
     }
 }
