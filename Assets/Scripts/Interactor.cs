@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactor : MonoBehaviour
 {
+    public UnityEvent onInteractIn;
+    public UnityEvent onInteractOut;
+
     RaycastHit hit;
     private bool hasInteracted = false;
 
@@ -20,15 +24,25 @@ public class Interactor : MonoBehaviour
         {
             if (hit.collider.CompareTag("Interactable"))
             {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (!hasInteracted)
                 {
-                    Debug.Log("Look At");
+                    onInteractIn.Invoke();
                     hasInteracted = true;
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    interactable.Interact();
                 }
             }
             else
             {
-                hasInteracted = false;
+                if (hasInteracted)
+                {
+                    onInteractOut.Invoke();
+                    hasInteracted = false;
+
+                }
             }
         }
     }
