@@ -137,8 +137,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: characters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: dialogueVO.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: 'dialogues.Array.data[0]'
@@ -151,6 +155,18 @@ PrefabInstance:
     - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: 'dialogues.Array.data[2]'
       value: Sugus,Ihiy!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'characters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: c911ba05dec690540947c9bf96068d91, type: 3}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: dialogueEffect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'dialogueEffect.Array.data[0]'
+      value: normal
       objectReference: {fileID: 0}
     - target: {fileID: 2772450711381534346, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: interactableName

@@ -2106,6 +2106,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: characters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: dialogueVO.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2120,6 +2124,34 @@ PrefabInstance:
     - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: 'dialogues.Array.data[2]'
       value: Agus,Dimana aku?
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'characters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0a0c3c07302da4043a29b1c2fe66440e, type: 3}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'characters.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 8a1821a84ad96aa47910019c2999347e, type: 3}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'characters.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0a0c3c07302da4043a29b1c2fe66440e, type: 3}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: dialogueEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'dialogueEffect.Array.data[0]'
+      value: normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'dialogueEffect.Array.data[1]'
+      value: flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064313158339396405, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
+      propertyPath: 'dialogueEffect.Array.data[2]'
+      value: normal
       objectReference: {fileID: 0}
     - target: {fileID: 2772450711381534346, guid: 10490ae2dae9cd64783634807f5b02bc, type: 3}
       propertyPath: sceneToLoad
