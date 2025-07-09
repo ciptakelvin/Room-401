@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,11 +12,11 @@ public class UIManager : MonoBehaviour
     }
     public void InteractIn()
     {
-        animator.SetTrigger("interactIn");
+        animator.SetBool("isActiveInteract", true);
     }
     public void InteractOut()
     {
-        animator.SetTrigger("interactOut");
+        animator.SetBool("isActiveInteract", false);
     }
 
     public void Hide()

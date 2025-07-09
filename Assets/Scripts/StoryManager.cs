@@ -1,8 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StoryManager : MonoBehaviour
 {
+    public UnityEvent onStoryEnded;
     public GameObject canvas;
     public TextMeshProUGUI title;
     public TextMeshProUGUI body;
@@ -15,9 +17,11 @@ public class StoryManager : MonoBehaviour
 
     public void StartDialogue()
     {
+ 
         if (currentDialogueIndex >= dialogues.Length)
         {
             canvas.SetActive(false);
+            onStoryEnded.Invoke();
             Invoke("enableFP", 0.2f);
             return;
         }
@@ -34,7 +38,7 @@ public class StoryManager : MonoBehaviour
 
     void enableFP()
     {
-        FindFirstObjectByType<GameManager>().SetFirstPersonMode();
+        FindFirstObjectByType<GameManager>().OnStoryEnded();
         currentDialogueIndex = 0; // Reset the dialogue index for the next interaction
     }
 }

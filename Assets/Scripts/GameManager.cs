@@ -4,6 +4,13 @@ public class GameManager : MonoBehaviour
 {
     public GameObject player;
     public UIManager uiManager;
+    public GameMode gameMode = GameMode.FirstPerson;
+    public enum GameMode
+    {
+        FirstPerson,
+        Dialogue,
+        Fixed
+    }
     Interactor interactor;
 
     //First Person Mode Component
@@ -20,6 +27,8 @@ public class GameManager : MonoBehaviour
         interactor.onInteractIn.AddListener(onInteractIn);
         interactor.onInteractOut.AddListener(onInteractOut);
         interactor.onInteract.AddListener(onInteract);
+
+        SetGameMode();
     }
 
     // Update is called once per frame
@@ -27,19 +36,34 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    void SetGameMode()
+    {
+        switch (gameMode)
+        {
+            case GameMode.FirstPerson:
+                SetFirstPersonMode();
+                break;
+            case GameMode.Dialogue:
+                SetDialogueMode();
+                break;
+            case GameMode.Fixed:
+                SetFixedMode();
+                break;
+            default:
+                break;
+        }
+    }
     void onInteract()
     {
         SetDialogueMode();
     }
     void onInteractIn()
     {
-        Debug.Log("Interact In");
         uiManager.InteractIn();
     }
 
     void onInteractOut()
     {
-        Debug.Log("Interact Out");
         uiManager.InteractOut();
     }
 
@@ -51,18 +75,15 @@ public class GameManager : MonoBehaviour
     public void SetFirstPersonMode()
     {
         ResetMode();
-        Debug.Log("Setting First Person Mode");
-        uiManager.Show();
-        uiManager.InteractIn();
         firstPersonMovement.enabled = true;
         mouseLook.enabled = true;
+        uiManager.Show();
     }
 
     public void SetDialogueMode()
     {
         ResetMode();
         uiManager.Hide();
-        uiManager.InteractOut();
     }
 
     public void SetFixedMode()
@@ -70,5 +91,11 @@ public class GameManager : MonoBehaviour
         ResetMode();
         firstPersonMovement.enabled = false;
         mouseLook.enabled = true;
+    }
+
+    public void OnStoryEnded()
+    {
+        SetGameMode();
+        uiManager.Show();
     }
 }
