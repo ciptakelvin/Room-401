@@ -21,7 +21,7 @@ public class Interactor : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Ray dari kamera ke posisi kursor
 
-        if (Physics.Raycast(ray, out hit, 50f)) // max jarak 10 unit
+        if (Physics.Raycast(ray, out hit, 25f)) // max jarak 10 unit
         {
             if (hit.collider.CompareTag("Interactable"))
             {
