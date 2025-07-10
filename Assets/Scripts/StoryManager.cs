@@ -18,18 +18,22 @@ public class StoryManager : MonoBehaviour
     public string[] dialogueEffect; //normal,flash,shake
 
     public int currentDialogueIndex = 0; // Index to track the current dialogue
+    public bool isStart = false;
 
-    public void StartDialogue()
+    private void Update()
     {
- 
+        if (Input.GetMouseButtonDown(0) && isStart)
+        {
+            showDialogue();
+        }
+    }
+    void showDialogue()
+    {
         if (currentDialogueIndex >= dialogues.Length)
         {
-            canvas.SetActive(false);
-            onStoryEnded.Invoke();
-            Invoke("enableFP", 0.2f);
+            Invoke("End", 0.2f);
             return;
         }
-        Debug.Log("Starting Dialogue");
         canvas.SetActive(true);
         string name = dialogues[currentDialogueIndex].Split(",")[0];
         string text = dialogues[currentDialogueIndex].Split(",")[1];
@@ -40,7 +44,7 @@ public class StoryManager : MonoBehaviour
         body.text = text;
         character.texture = characterTexture;
 
-        switch(effect)
+        switch (effect)
         {
             case "flash":
                 flash.SetActive(true);
@@ -52,10 +56,20 @@ public class StoryManager : MonoBehaviour
 
         currentDialogueIndex++;
     }
-
-    void enableFP()
+    public void StartDialogue()
     {
-        FindFirstObjectByType<GameManager>().OnStoryEnded();
+        if (!isStart)
+        {
+            isStart = true;
+            showDialogue();
+        }
+    }
+
+    void End()
+    {
         currentDialogueIndex = 0; // Reset the dialogue index for the next interaction
+        isStart = false;
+        canvas.SetActive(false);
+        onStoryEnded.Invoke();
     }
 }

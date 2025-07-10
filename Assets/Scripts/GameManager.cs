@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     {
         FirstPerson,
         Dialogue,
-        Fixed
+        Fixed,
+        Puzzle
     }
     Interactor interactor;
 
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
 
         interactor.onInteractIn.AddListener(onInteractIn);
         interactor.onInteractOut.AddListener(onInteractOut);
-        interactor.onInteract.AddListener(onInteract);
 
         SetGameMode();
     }
@@ -49,13 +49,12 @@ public class GameManager : MonoBehaviour
             case GameMode.Fixed:
                 SetFixedMode();
                 break;
+            case GameMode.Puzzle:
+                SetPuzzleMode();
+                break;
             default:
                 break;
         }
-    }
-    void onInteract()
-    {
-        SetDialogueMode();
     }
     void onInteractIn()
     {
@@ -71,6 +70,8 @@ public class GameManager : MonoBehaviour
     {
         firstPersonMovement.enabled = false;
         mouseLook.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void SetFirstPersonMode()
     {
@@ -92,10 +93,13 @@ public class GameManager : MonoBehaviour
         firstPersonMovement.enabled = false;
         mouseLook.enabled = true;
     }
-
-    public void OnStoryEnded()
+    public void SetPuzzleMode()
     {
-        SetGameMode();
-        uiManager.Show();
+        ResetMode();
+        firstPersonMovement.enabled = false;
+        mouseLook.enabled = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        uiManager.Hide();
     }
 }

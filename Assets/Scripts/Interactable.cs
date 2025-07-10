@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
+    public UnityEvent OnInteract;
     public string interactableName;
     public TextMeshProUGUI description;
     public GameObject descriptionContainer;
@@ -14,6 +16,8 @@ public class Interactable : MonoBehaviour
     public void Start()
     {
         description.text = "";
+        storyManager = GetComponent<StoryManager>();
+        storyManager.onStoryEnded.AddListener(onStoryEnded);
     }
     public void Interact()
     {
@@ -22,11 +26,9 @@ public class Interactable : MonoBehaviour
             SceneManager.LoadScene(sceneToLoad);
             return;
         }
-        Debug.Log("Interact");
-        storyManager = GetComponent<StoryManager>();
-        storyManager.StartDialogue();
-        storyManager.onStoryEnded.AddListener(onStoryEnded);
+        OnInteract.Invoke();
         description.text = "";
+        descriptionContainer.SetActive(false);
     }
     public void InteractIn()
     {
@@ -41,6 +43,6 @@ public class Interactable : MonoBehaviour
 
     public void onStoryEnded()
     {
-        description.text = "interactableName";
+        description.text = interactableName;
     }
 }
