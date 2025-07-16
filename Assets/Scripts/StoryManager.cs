@@ -18,16 +18,8 @@ public class StoryManager : MonoBehaviour
     public string[] dialogueEffect; //normal,flash,shake
 
     public int currentDialogueIndex = 0; // Index to track the current dialogue
-    public bool isStart = false;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && isStart)
-        {
-            showDialogue();
-        }
-    }
-    void showDialogue()
+    private void showDialogue()
     {
         if (currentDialogueIndex >= dialogues.Length)
         {
@@ -35,8 +27,8 @@ public class StoryManager : MonoBehaviour
             return;
         }
         canvas.SetActive(true);
-        string name = dialogues[currentDialogueIndex].Split(",")[0];
-        string text = dialogues[currentDialogueIndex].Split(",")[1];
+        string name = dialogues[currentDialogueIndex].Split(";")[0];
+        string text = dialogues[currentDialogueIndex].Split(";")[1];
         Texture characterTexture = characters[currentDialogueIndex];
         string effect = dialogueEffect[currentDialogueIndex];
 
@@ -58,17 +50,12 @@ public class StoryManager : MonoBehaviour
     }
     public void StartDialogue()
     {
-        if (!isStart)
-        {
-            isStart = true;
-            showDialogue();
-        }
+        showDialogue();
     }
 
     void End()
     {
         currentDialogueIndex = 0; // Reset the dialogue index for the next interaction
-        isStart = false;
         canvas.SetActive(false);
         onStoryEnded.Invoke();
     }
