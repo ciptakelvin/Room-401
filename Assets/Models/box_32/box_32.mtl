@@ -1,0 +1,15 @@
+# Blender MTL File: 'box_32.blend'
+# Material Count: 1
+
+newmtl box_32
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Compressed/3d_models/box_32/textures/normal.jpg
+map_Kd Compressed/3d_models/box_32/textures/albedo.jpg
+map_Ns Compressed/3d_models/box_32/textures/roughness.jpg

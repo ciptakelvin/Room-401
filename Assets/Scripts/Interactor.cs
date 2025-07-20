@@ -10,22 +10,31 @@ public class Interactor : MonoBehaviour
     RaycastHit hit;
     private bool hasInteracted = false;
     Interactable interactable;
+    private GameObject previousInteractable = null;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
-    // Update is called once per frame
+
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Ray dari kamera ke posisi kursor
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 8f)) // max jarak 10 unit
+        if (Physics.Raycast(ray, out hit, 8f))
         {
             if (hit.collider.CompareTag("Interactable"))
             {
                 interactable = hit.collider.GetComponent<Interactable>();
+                GameObject currentInteractable = hit.collider.gameObject;
+
+                // Check if the previous hit is the same object
+                if (currentInteractable != previousInteractable)
+                {
+                    // The object under the cursor has changed
+                    previousInteractable = currentInteractable;
+                    hasInteracted = false;
+                }
+
                 if (!hasInteracted)
                 {
                     onInteractIn.Invoke();
@@ -45,10 +54,10 @@ public class Interactor : MonoBehaviour
                     onInteractOut.Invoke();
                     interactable.InteractOut();
                     hasInteracted = false;
-
+                    previousInteractable = null;
                 }
             }
-        } 
+        }
         else
         {
             if (hasInteracted)
@@ -56,7 +65,7 @@ public class Interactor : MonoBehaviour
                 onInteractOut.Invoke();
                 interactable.InteractOut();
                 hasInteracted = false;
-
+                previousInteractable = null;
             }
         }
     }

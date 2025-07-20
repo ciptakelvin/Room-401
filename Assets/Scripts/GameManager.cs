@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     void ResetMode()
     {
+        interactor.enabled = true;
         firstPersonMovement.enabled = false;
         mouseLook.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -96,6 +97,7 @@ public class GameManager : MonoBehaviour
     public void SetPuzzleMode()
     {
         ResetMode();
+        interactor.enabled = false;
         firstPersonMovement.enabled = false;
         mouseLook.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;

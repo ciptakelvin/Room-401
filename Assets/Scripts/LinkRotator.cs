@@ -11,13 +11,14 @@ public class LinkRotator : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 0, 90));
         OnRotate.Invoke();
+        print("Rotated: " + transform.eulerAngles.z);
     }
 
     public bool IsCorrect()
     {
         if (correctRotation == -1)
         {
-            if (transform.eulerAngles.z == 0 || transform.eulerAngles.z == 180)
+            if (Mathf.Round(transform.eulerAngles.z) == 0 || Mathf.Round(transform.eulerAngles.z) == 180)
             {
                 return true;
             }
@@ -28,7 +29,7 @@ public class LinkRotator : MonoBehaviour
         }
         if (correctRotation == -2)
         {
-            if (transform.eulerAngles.z == 90 || transform.eulerAngles.z == 270)
+            if (Mathf.Round(transform.eulerAngles.z) == 90 || Mathf.Round(transform.eulerAngles.z) == 270)
             {
                 return true;
             }
@@ -37,7 +38,7 @@ public class LinkRotator : MonoBehaviour
                 return false;
             }
         }
-        if (transform.rotation.eulerAngles.z % 360 == correctRotation)
+        if (Mathf.Round(transform.rotation.eulerAngles.z) % 360 == correctRotation)
             return true;
         else
             return false;

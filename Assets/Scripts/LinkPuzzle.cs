@@ -24,6 +24,7 @@ public class LinkPuzzle : MonoBehaviour
             if(l.IsCorrect())
             {
                 count++;
+                print(count);
                 if (count == linkRotator.Length)
                 {
                     Finished.Invoke();

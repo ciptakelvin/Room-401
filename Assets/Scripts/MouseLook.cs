@@ -25,7 +25,7 @@ public class MouseLook : MonoBehaviour
 
         rotationX -= MouseY;
         if (isClampX)
-            rotationX = Mathf.Clamp(rotationX, -35f, 35f);
+            rotationX = Mathf.Clamp(rotationX, -90f, 90f);
 
         rotationY += MouseX;
         if (isClampY)
